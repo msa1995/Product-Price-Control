@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_template_form_view_price_limits" model="ir.ui.view">
+        <field name="name">product.template.form.price.limits</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+
+            <!-- Insert a new labeled group under Sales Price -->
+            <xpath expr="//field[@name='list_price']" position="after">
+                <group string="Sale Price Limits" col="2">
+                    <field name="min_sale_price"
+                           groups="sales_team.group_sale_manager"/>
+                    <field name="max_sale_price"
+                           groups="sales_team.group_sale_manager"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
